@@ -1,7 +1,9 @@
 using UnityEngine;
 using Gamekit3D.Message;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.XR.WSA;
+using UnityEngine.Analytics;
 
 namespace Gamekit3D
 {
@@ -289,6 +291,17 @@ namespace Gamekit3D
                     m_VerticalSpeed = jumpSpeed;
                     m_IsGrounded = false;
                     m_ReadyToJump = false;
+
+                    //Lasse
+                    AnalyticsResult analyticsResult = Analytics.CustomEvent(
+                        "Jump",
+                        new Dictionary<string, object> {
+                            {"Level", 1 },
+                            {"Position", transform.position }
+                        }
+                    );
+                    Debug.Log("analitics result from Jump:" + analyticsResult);
+
                 }
             }
             else
@@ -637,6 +650,9 @@ namespace Gamekit3D
                 case MessageType.DEAD:
                     {
                         Damageable.DamageMessage damageData = (Damageable.DamageMessage)data;
+
+                        
+
                         Die(damageData);
                     }
                     break;
@@ -677,6 +693,26 @@ namespace Gamekit3D
             m_VerticalSpeed = 0f;
             m_Respawning = true;
             m_Damageable.isInvulnerable = true;
+
+            //Lasse
+            Dictionary<string, object> myDic = new Dictionary<string, object>();
+
+            //Type
+            myDic.Add("Player Type", "Dead");
+
+            //Transform
+            myDic.Add("Position X", transform.position.x);
+            myDic.Add("Position Y", transform.position.y);
+            myDic.Add("Position Z", transform.position.z);
+
+            //TimeStamp
+            myDic.Add("TimeStamp", Time.time);
+
+            //PlayerID
+            myDic.Add("PlayerID", /*PlayerData.player_id*/0);
+
+
+            PlayerEventTrack.EventList.Add(myDic);
         }
     }
 }
