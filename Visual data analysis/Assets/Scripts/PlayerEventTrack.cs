@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class PlayerEventTrack : MonoBehaviour
+
+public class PlayerEventTrack 
 {
 
     static public List<Dictionary<string, object>> EventList = new List<Dictionary<string, object>>();
-
-    private void OnApplicationQuit()
-    {
-        //Writte xml/json/csv
-    }
-
+   
+   
 }
