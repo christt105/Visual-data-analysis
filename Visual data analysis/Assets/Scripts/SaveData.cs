@@ -91,20 +91,13 @@ public class SaveData : MonoBehaviour
             {
                 if (value.ToString() == "Movement")
                 {
-                    string[] rowValueTemp = new string[PlayerEventTrack.EventList[i].Count];
+                    rowDataTemp = new string[PlayerEventTrack.EventList[i].Count];
                     int index = 0;
                     foreach (var j in PlayerEventTrack.EventList[i])
                     {
-                        foreach (string s in rowDataTemp)
-                        {
-                            if (s == j.Key)
-                            {
-                                rowValueTemp[index++] = j.Value.ToString();
-                                break;
-                            }
-                        }
+                        rowDataTemp[index++] = j.Value.ToString();
                     }
-                    rowData.Add(rowValueTemp);
+                    rowData.Add(rowDataTemp);
                 }
             }
             else
