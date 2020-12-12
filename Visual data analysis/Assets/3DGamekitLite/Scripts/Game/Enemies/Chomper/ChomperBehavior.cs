@@ -1,5 +1,6 @@
 ﻿using Gamekit3D.Message;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Gamekit3D
 {
@@ -222,9 +223,49 @@ namespace Gamekit3D
             {
                 case Message.MessageType.DEAD:
                     Death((Damageable.DamageMessage)msg);
+                    //=========================================================================================
+                    Dictionary<string, object> myDic = new Dictionary<string, object>();
+
+                    //Type
+                    myDic.Add("Type", "EnemyKilled");
+
+                    //TimeStamp
+                    myDic.Add("TimeStamp", Time.time);
+
+                    //Transform
+                    myDic.Add("PositionX", transform.position.x);
+                    myDic.Add("PositionY", transform.position.y);
+                    myDic.Add("PositionZ", transform.position.z);
+
+                    //PlayerID
+                    myDic.Add("PlayerID", /*PlayerData.player_id*/0);
+
+                    PlayerEventTrack.EventList.Add(myDic);
+                    Debug.Log("Enemy Killed");
+                    //=========================================================================================
                     break;
                 case Message.MessageType.DAMAGED:
                     ApplyDamage((Damageable.DamageMessage)msg);
+                    //=========================================================================================
+                    Dictionary<string, object> myDic2 = new Dictionary<string, object>();
+
+                    //Type
+                    myDic2.Add("Type", "EnemyDamaged");
+
+                    //TimeStamp
+                    myDic2.Add("TimeStamp", Time.time);
+
+                    //Transform
+                    myDic2.Add("PositionX", transform.position.x);
+                    myDic2.Add("PositionY", transform.position.y);
+                    myDic2.Add("PositionZ", transform.position.z);
+
+                    //PlayerID
+                    myDic2.Add("PlayerID", /*PlayerData.player_id*/0);
+
+                    PlayerEventTrack.EventList.Add(myDic2);
+                    Debug.Log("Enemy Damaged");
+                    //=========================================================================================
                     break;
                 default:
                     break;
