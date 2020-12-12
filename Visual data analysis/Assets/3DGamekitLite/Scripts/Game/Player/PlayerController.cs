@@ -714,5 +714,14 @@ namespace Gamekit3D
 
             PlayerEventTrack.EventList.Add(myDic);
         }
+
+        private void OnApplicationQuit()
+        {
+            //TODO: do stuff
+        }
+        
+        
     }
+
+
 }
