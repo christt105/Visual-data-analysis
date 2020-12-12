@@ -310,6 +310,7 @@ namespace Gamekit3D
                     myDic.Add("PlayerID", /*PlayerData.player_id*/0);
 
                     PlayerEventTrack.EventList.Add(myDic);
+                    Debug.Log("Player Jump");
                     //=========================================================================================
 
                 }
@@ -570,6 +571,27 @@ namespace Gamekit3D
         // This is called by an animation event when Ellen swings her staff.
         public void MeleeAttackStart(int throwing = 0)
         {
+            //=========================================================================================
+            Dictionary<string, object> myDic = new Dictionary<string, object>();
+
+            //Type
+            myDic.Add("PlayerType", "Attack");
+
+            //Transform
+            myDic.Add("PositionX", transform.position.x);
+            myDic.Add("PositionY", transform.position.y);
+            myDic.Add("PositionZ", transform.position.z);
+
+            //TimeStamp
+            myDic.Add("TimeStamp", Time.time);
+
+            //PlayerID
+            myDic.Add("PlayerID", /*PlayerData.player_id*/0);
+
+            PlayerEventTrack.EventList.Add(myDic);
+            Debug.Log("Player Attack");
+            //=========================================================================================
+
             meleeWeapon.BeginAttack(throwing != 0);
             m_InAttack = true;
         }
@@ -722,6 +744,7 @@ namespace Gamekit3D
             myDic.Add("PlayerID", /*PlayerData.player_id*/0);
 
             PlayerEventTrack.EventList.Add(myDic);
+            Debug.Log("Player Dead");
             //=========================================================================================
         }
     }
