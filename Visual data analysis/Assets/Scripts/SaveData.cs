@@ -30,7 +30,7 @@ public class SaveData : MonoBehaviour
         {
             if (PlayerEventTrack.EventList[i].TryGetValue("Type", out object value))
             {
-                if (value != "Move")
+                if (value.ToString() != "Movement")
                 {
                     rowDataTemp = new string[PlayerEventTrack.EventList[i].Count];
                     int index = 0;
@@ -76,9 +76,9 @@ public class SaveData : MonoBehaviour
         string[] rowDataTemp = new string[6];
         rowDataTemp[0] = "Type";
         rowDataTemp[1] = "TimeStamp";
-        rowDataTemp[2] = "PosX";
-        rowDataTemp[3] = "PosY";
-        rowDataTemp[4] = "PosZ";
+        rowDataTemp[2] = "PositionX";
+        rowDataTemp[3] = "PositionY";
+        rowDataTemp[4] = "PositionZ";
         rowDataTemp[5] = "PlayerID";
         rowData.Add(rowDataTemp);
 
@@ -87,7 +87,7 @@ public class SaveData : MonoBehaviour
         {
             if (PlayerEventTrack.EventList[i].TryGetValue("Type", out object value))
             {
-                if (value == "Move")
+                if (value.ToString() == "Movement")
                 {
                     rowDataTemp = new string[PlayerEventTrack.EventList[i].Count];
                     int index = 0;
