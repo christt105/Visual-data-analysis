@@ -151,6 +151,8 @@ namespace Gamekit3D
             meleeWeapon.SetOwner(gameObject);
 
             s_Instance = this;
+
+            StartCoroutine("TrackPosition");
         }
 
         // Called automatically by Unity after Awake whenever the script is enabled. 
@@ -182,6 +184,7 @@ namespace Gamekit3D
         // Called automatically by Unity once every Physics step.
         void FixedUpdate()
         {
+            
             CacheAnimatorState();
 
             UpdateInputBlocking();
@@ -747,7 +750,32 @@ namespace Gamekit3D
             Debug.Log("Player Dead");
             //=========================================================================================
         }
+
+        IEnumerator TrackPosition()
+        {
+            //=========================================================================================
+            Dictionary<string, object> myDic = new Dictionary<string, object>();
+
+            //Type
+            myDic.Add("PlayerType", "Movement");
+
+            //Transform
+            myDic.Add("PositionX", transform.position.x);
+            myDic.Add("PositionY", transform.position.y);
+            myDic.Add("PositionZ", transform.position.z);
+
+            //TimeStamp
+            myDic.Add("TimeStamp", Time.time);
+
+            //PlayerID
+            myDic.Add("PlayerID", /*PlayerData.player_id*/0);
+
+            PlayerEventTrack.EventList.Add(myDic);
+            Debug.Log("Player Movement");
+            //=========================================================================================
+
+            yield return new WaitForSeconds(1f);
+            StartCoroutine("TrackPosition");
+        }
     }
-
-
 }
