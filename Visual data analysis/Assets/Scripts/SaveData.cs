@@ -14,6 +14,7 @@ public class SaveData : MonoBehaviour
 
     public void SaveEvents()
     {
+        rowData.Clear(); // ayayayay polete
 
         // Creating First row of titles manually..
         string[] rowDataTemp = new string[6];
@@ -36,14 +37,15 @@ public class SaveData : MonoBehaviour
                     int index = 0;
                     foreach (var j in PlayerEventTrack.EventList[i])
                     {
-                        rowDataTemp[index++] = j.Value.ToString(); // type
+                        rowDataTemp[index++] = j.Value.ToString();
                     }
                     rowData.Add(rowDataTemp);
-                    
-                    
                 }
             }
-           
+            else
+            {
+                Debug.Log("No Type Key found");
+            }
         }
 
         string[][] output = new string[rowData.Count][];
@@ -89,18 +91,26 @@ public class SaveData : MonoBehaviour
             {
                 if (value.ToString() == "Movement")
                 {
-                    rowDataTemp = new string[PlayerEventTrack.EventList[i].Count];
+                    string[] rowValueTemp = new string[PlayerEventTrack.EventList[i].Count];
                     int index = 0;
                     foreach (var j in PlayerEventTrack.EventList[i])
                     {
-                        rowDataTemp[index++] = j.Value.ToString(); // type
+                        foreach (string s in rowDataTemp)
+                        {
+                            if (s == j.Key)
+                            {
+                                rowValueTemp[index++] = j.Value.ToString();
+                                break;
+                            }
+                        }
                     }
-                    rowData.Add(rowDataTemp);
-
-
+                    rowData.Add(rowValueTemp);
                 }
             }
-
+            else
+            {
+                Debug.Log("No Type Key found");
+            }
         }
 
         string[][] output = new string[rowData.Count][];

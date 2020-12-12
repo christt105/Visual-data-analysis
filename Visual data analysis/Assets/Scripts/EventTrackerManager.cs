@@ -24,8 +24,9 @@ public class EventTrackerManager : SaveData
     private void OnApplicationQuit()
     {
         //Writte xml/json/csv
-       
-       // Save();
+
+        SavePosition();
+        SaveEvents();
 
     }
 }
