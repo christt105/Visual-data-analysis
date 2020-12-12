@@ -718,6 +718,27 @@ namespace Gamekit3D
             {
                 hurtAudioPlayer.PlayRandomClip();
             }
+
+            //=========================================================================================
+            Dictionary<string, object> myDic = new Dictionary<string, object>();
+
+            //Type
+            myDic.Add("PlayerType", "Damaged");
+
+            //Transform
+            myDic.Add("PositionX", transform.position.x);
+            myDic.Add("PositionY", transform.position.y);
+            myDic.Add("PositionZ", transform.position.z);
+
+            //TimeStamp
+            myDic.Add("TimeStamp", Time.time);
+
+            //PlayerID
+            myDic.Add("PlayerID", /*PlayerData.player_id*/0);
+
+            PlayerEventTrack.EventList.Add(myDic);
+            Debug.Log("Player Damaged");
+            //=========================================================================================
         }
 
         // Called by OnReceiveMessage and by DeathVolumes in the scene.

@@ -111,6 +111,53 @@ namespace Gamekit3D
             if (audioCanvas)
                 audioCanvas.SetActive(false);
 
+            if (m_InPause)
+            {
+                //=========================================================================================
+                Dictionary<string, object> myDic = new Dictionary<string, object>();
+
+                //Type
+                myDic.Add("PlayerType", "CloseMenu");
+
+                //Transform
+                myDic.Add("PositionX", transform.position.x);
+                myDic.Add("PositionY", transform.position.y);
+                myDic.Add("PositionZ", transform.position.z);
+
+                //TimeStamp
+                myDic.Add("TimeStamp", Time.time);
+
+                //PlayerID
+                myDic.Add("PlayerID", /*PlayerData.player_id*/0);
+
+                PlayerEventTrack.EventList.Add(myDic);
+                Debug.Log("Player CloseMenu");
+                //=========================================================================================
+            }
+            else
+            {
+                //=========================================================================================
+                Dictionary<string, object> myDic = new Dictionary<string, object>();
+
+                //Type
+                myDic.Add("PlayerType", "OpenMenu");
+
+                //Transform
+                myDic.Add("PositionX", transform.position.x);
+                myDic.Add("PositionY", transform.position.y);
+                myDic.Add("PositionZ", transform.position.z);
+
+                //TimeStamp
+                myDic.Add("TimeStamp", Time.time);
+
+                //PlayerID
+                myDic.Add("PlayerID", /*PlayerData.player_id*/0);
+
+                PlayerEventTrack.EventList.Add(myDic);
+                Debug.Log("Player OpenMenu");
+                //=========================================================================================
+            }
+
             m_InPause = !m_InPause;
         }
     }
