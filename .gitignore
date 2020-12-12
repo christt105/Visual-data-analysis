@@ -58,3 +58,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 packages-lock.json
+Visual data analysis/ProjectSettings/ProjectSettings.asset
+Visual data analysis/ProjectSettings/Packages/com.unity.probuilder/Settings.json
