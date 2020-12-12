@@ -292,15 +292,25 @@ namespace Gamekit3D
                     m_IsGrounded = false;
                     m_ReadyToJump = false;
 
-                    //Lasse
-                    AnalyticsResult analyticsResult = Analytics.CustomEvent(
-                        "Jump",
-                        new Dictionary<string, object> {
-                            {"Level", 1 },
-                            {"Position", transform.position }
-                        }
-                    );
-                    Debug.Log("analitics result from Jump:" + analyticsResult);
+                    //=========================================================================================
+                    Dictionary<string, object> myDic = new Dictionary<string, object>();
+
+                    //Type
+                    myDic.Add("PlayerType", "Jump");
+
+                    //Transform
+                    myDic.Add("PositionX", transform.position.x);
+                    myDic.Add("PositionY", transform.position.y);
+                    myDic.Add("PositionZ", transform.position.z);
+
+                    //TimeStamp
+                    myDic.Add("TimeStamp", Time.time);
+
+                    //PlayerID
+                    myDic.Add("PlayerID", /*PlayerData.player_id*/0);
+
+                    PlayerEventTrack.EventList.Add(myDic);
+                    //=========================================================================================
 
                 }
             }
@@ -694,16 +704,16 @@ namespace Gamekit3D
             m_Respawning = true;
             m_Damageable.isInvulnerable = true;
 
-            //Lasse
+            //=========================================================================================
             Dictionary<string, object> myDic = new Dictionary<string, object>();
 
             //Type
-            myDic.Add("Player Type", "Dead");
+            myDic.Add("PlayerType", "Dead");
 
             //Transform
-            myDic.Add("Position X", transform.position.x);
-            myDic.Add("Position Y", transform.position.y);
-            myDic.Add("Position Z", transform.position.z);
+            myDic.Add("PositionX", transform.position.x);
+            myDic.Add("PositionY", transform.position.y);
+            myDic.Add("PositionZ", transform.position.z);
 
             //TimeStamp
             myDic.Add("TimeStamp", Time.time);
@@ -711,9 +721,9 @@ namespace Gamekit3D
             //PlayerID
             myDic.Add("PlayerID", /*PlayerData.player_id*/0);
 
-
             PlayerEventTrack.EventList.Add(myDic);
-        }     
+            //=========================================================================================
+        }
     }
 
 
