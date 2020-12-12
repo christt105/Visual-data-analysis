@@ -299,15 +299,15 @@ namespace Gamekit3D
                     Dictionary<string, object> myDic = new Dictionary<string, object>();
 
                     //Type
-                    myDic.Add("PlayerType", "Jump");
+                    myDic.Add("Type", "Jump");
+
+                    //TimeStamp
+                    myDic.Add("TimeStamp", Time.time);
 
                     //Transform
                     myDic.Add("PositionX", transform.position.x);
                     myDic.Add("PositionY", transform.position.y);
                     myDic.Add("PositionZ", transform.position.z);
-
-                    //TimeStamp
-                    myDic.Add("TimeStamp", Time.time);
 
                     //PlayerID
                     myDic.Add("PlayerID", /*PlayerData.player_id*/0);
@@ -578,15 +578,16 @@ namespace Gamekit3D
             Dictionary<string, object> myDic = new Dictionary<string, object>();
 
             //Type
-            myDic.Add("PlayerType", "Attack");
+            myDic.Add("Type", "Attack");
+
+            //TimeStamp
+            myDic.Add("TimeStamp", Time.time);
 
             //Transform
             myDic.Add("PositionX", transform.position.x);
             myDic.Add("PositionY", transform.position.y);
             myDic.Add("PositionZ", transform.position.z);
 
-            //TimeStamp
-            myDic.Add("TimeStamp", Time.time);
 
             //PlayerID
             myDic.Add("PlayerID", /*PlayerData.player_id*/0);
@@ -723,15 +724,15 @@ namespace Gamekit3D
             Dictionary<string, object> myDic = new Dictionary<string, object>();
 
             //Type
-            myDic.Add("PlayerType", "Damaged");
+            myDic.Add("Type", "Damaged");
+
+            //TimeStamp
+            myDic.Add("TimeStamp", Time.time);
 
             //Transform
             myDic.Add("PositionX", transform.position.x);
             myDic.Add("PositionY", transform.position.y);
             myDic.Add("PositionZ", transform.position.z);
-
-            //TimeStamp
-            myDic.Add("TimeStamp", Time.time);
 
             //PlayerID
             myDic.Add("PlayerID", /*PlayerData.player_id*/0);
@@ -754,15 +755,15 @@ namespace Gamekit3D
             Dictionary<string, object> myDic = new Dictionary<string, object>();
 
             //Type
-            myDic.Add("PlayerType", "Dead");
+            myDic.Add("Type", "Dead");
+
+            //TimeStamp
+            myDic.Add("TimeStamp", Time.time);
 
             //Transform
             myDic.Add("PositionX", transform.position.x);
             myDic.Add("PositionY", transform.position.y);
             myDic.Add("PositionZ", transform.position.z);
-
-            //TimeStamp
-            myDic.Add("TimeStamp", Time.time);
 
             //PlayerID
             myDic.Add("PlayerID", /*PlayerData.player_id*/0);
@@ -778,15 +779,15 @@ namespace Gamekit3D
             Dictionary<string, object> myDic = new Dictionary<string, object>();
 
             //Type
-            myDic.Add("PlayerType", "Movement");
+            myDic.Add("Type", "Movement");
+
+            //TimeStamp
+            myDic.Add("TimeStamp", Time.time);
 
             //Transform
             myDic.Add("PositionX", transform.position.x);
             myDic.Add("PositionY", transform.position.y);
             myDic.Add("PositionZ", transform.position.z);
-
-            //TimeStamp
-            myDic.Add("TimeStamp", Time.time);
 
             //PlayerID
             myDic.Add("PlayerID", /*PlayerData.player_id*/0);
