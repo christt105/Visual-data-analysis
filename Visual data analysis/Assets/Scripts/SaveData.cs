@@ -73,7 +73,8 @@ public class SaveData : MonoBehaviour
 
     public void SavePosition()
     {
-
+		rowData.Clear(); // ayayayay polete
+		
         // Creating First row of titles manually..
         string[] rowDataTemp = new string[6];
         rowDataTemp[0] = "Type";
