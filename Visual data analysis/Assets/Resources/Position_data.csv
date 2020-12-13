@@ -1,2 +1,6 @@
 Type,TimeStamp,PositionX,PositionY,PositionZ,PlayerID
+Movement,0,-2,0.5,0,0
+Movement,1.002292,-2,-1.192093E-07,0,0
+Movement,2.003248,-2,-1.192093E-07,0,0
+Movement,3.004739,-2,-1.192093E-07,0,0
 

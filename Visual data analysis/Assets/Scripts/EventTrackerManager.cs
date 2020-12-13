@@ -7,14 +7,14 @@ public class EventTrackerManager : SaveData
     void Awake()
     {
 
-        List<Dictionary<string, object>> data = ReadData.Read("Saved_data");
+        PlayerEventTrack.EventData = ReadData.Read("Saved_data");
 
-        for (var i = 0; i < data.Count; i++)
+        for (var i = 0; i < PlayerEventTrack.EventData.Count; i++)
         {
-            print("Type " + data[i]["Type"] + " " +
-                   "TimeStamp " + data[i]["TimeStamp"] + " " +
-                   "PositionX " + data[i]["PositionX"] + " " +
-                   "PositionY " + data[i]["PositionY"]);
+            print("Type " + PlayerEventTrack.EventData[i]["Type"] + " " +
+                   "TimeStamp " + PlayerEventTrack.EventData[i]["TimeStamp"] + " " +
+                   "PositionX " + PlayerEventTrack.EventData[i]["PositionX"] + " " +
+                   "PositionY " + PlayerEventTrack.EventData[i]["PositionY"]);
         }
 
     }
