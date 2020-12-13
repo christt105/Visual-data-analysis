@@ -37,7 +37,7 @@ public class SaveData : MonoBehaviour
                     int index = 0;
                     foreach (var j in PlayerEventTrack.EventList[i])
                     {
-                        rowDataTemp[index++] = j.Value.ToString();
+                        rowDataTemp[index++] = j.Value.ToString().Replace(",", ".");
                     }
                     rowData.Add(rowDataTemp);
                 }
@@ -96,7 +96,7 @@ public class SaveData : MonoBehaviour
                     int index = 0;
                     foreach (var j in PlayerEventTrack.EventList[i])
                     {
-                        rowDataTemp[index++] = j.Value.ToString();
+                        rowDataTemp[index++] = j.Value.ToString().Replace(",", ".");
                     }
                     rowData.Add(rowDataTemp);
                 }
@@ -134,7 +134,7 @@ public class SaveData : MonoBehaviour
     private string getPath(string name)
     {
 #if UNITY_EDITOR
-        return Application.dataPath + "/CSV/" + name + ".csv";
+        return Application.dataPath + "/Resources/" + name + ".csv";
 #elif UNITY_ANDROID
         return Application.persistentDataPath+"Saved_data.csv";
 #elif UNITY_IPHONE
