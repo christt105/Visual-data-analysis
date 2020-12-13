@@ -30,8 +30,8 @@ public class ReadData
             for (var j = 0; j < header.Length && j < values.Length; j++)
             {
                 string value = values[j];
-                value = value.TrimStart(TRIM_CHARS).TrimEnd(TRIM_CHARS).Replace("\\", "");
-                object finalvalue = value;
+                value = value.TrimStart(TRIM_CHARS).TrimEnd(TRIM_CHARS).Replace("\\", "").Replace(".",",");
+                object finalvalue = value; 
                 int n;
                 float f;
                 if (int.TryParse(value, out n))
@@ -42,7 +42,6 @@ public class ReadData
                 {
                     finalvalue = f;
                 }
-                finalvalue.ToString().Replace(".", ",");
                 entry[header[j]] = finalvalue;
             }
             list.Add(entry);
