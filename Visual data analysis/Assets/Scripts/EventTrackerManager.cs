@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EventTrackerManager : SaveData
 {
+    public bool saveOnQuit = true;
     void Awake()
     {
 
@@ -21,7 +22,7 @@ public class EventTrackerManager : SaveData
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.KeypadPlus))
+        if(Input.GetKeyDown(KeyCode.KeypadPlus))
         {
             Debug.Log("Saving Data into .CSV File...");
             SaveEvents();
@@ -32,7 +33,10 @@ public class EventTrackerManager : SaveData
     
     private void OnApplicationQuit()
     {
-        SavePosition();
-        SaveEvents();
+        if (saveOnQuit)
+        {
+            SavePosition();
+            SaveEvents();
+        }
     }
 }

@@ -313,7 +313,7 @@ namespace Gamekit3D
                     myDic.Add("PlayerID", /*PlayerData.player_id*/0);
 
                     PlayerEventTrack.EventList.Add(myDic);
-                    Debug.Log("Player Jump");
+                    //Debug.Log("Player Jump");
                     //=========================================================================================
 
                 }
@@ -793,10 +793,10 @@ namespace Gamekit3D
             myDic.Add("PlayerID", /*PlayerData.player_id*/0);
 
             PlayerEventTrack.EventList.Add(myDic);
-            Debug.Log("Player Movement");
+            //Debug.Log("Player Movement");
             //=========================================================================================
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             StartCoroutine("TrackPosition");
         }
     }

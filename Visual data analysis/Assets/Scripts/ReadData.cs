@@ -34,13 +34,13 @@ public class ReadData
                 object finalvalue = value; 
                 int n;
                 float f;
-                if (int.TryParse(value, out n))
-                {
-                    finalvalue = n;
-                }
-                else if (float.TryParse(value, out f))
+                if (float.TryParse(value, out f))
                 {
                     finalvalue = f;
+                }
+                else if (int.TryParse(value, out n))
+                {
+                    finalvalue = n;
                 }
                 entry[header[j]] = finalvalue;
             }
