@@ -42,6 +42,7 @@ public class ReadData
                 {
                     finalvalue = f;
                 }
+                finalvalue.ToString().Replace(".", ",");
                 entry[header[j]] = finalvalue;
             }
             list.Add(entry);
