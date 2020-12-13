@@ -24,7 +24,6 @@ namespace Gamekit3D
         protected PlayableDirector[] m_Directors;
 
         // UI bool ===========================================
-        bool active_all = false;
         bool active_position = false;
         bool active_jump = false;
         bool active_attack = false;
@@ -33,6 +32,7 @@ namespace Gamekit3D
         bool active_ui = false;
         bool active_enemy_damaged = false;
         bool active_enemy_killed = false;
+        public List<GameObject> buttons = new List<GameObject>();
         // ===================================================
 
 
@@ -79,7 +79,7 @@ namespace Gamekit3D
             if (PlayerInput.Instance != null && PlayerInput.Instance.Pause)
             {
                 SwitchPauseState();
-            }
+            }           
         }
 
         protected void SwitchPauseState()
@@ -162,108 +162,62 @@ namespace Gamekit3D
         {
             SavePosition();
             SaveEvents();
+            PlayerEventTrack.EventData = ReadData.Read("Saved_data");
+            PlayerEventTrack.PositiontData = ReadData.Read("Position_data");
+
+            //TODO: Christt stuff
         }
 
-        public void ReadDataButton()
-        {
-           PlayerEventTrack.EventData = ReadData.Read("Saved_data");
-           PlayerEventTrack.PositiontData = ReadData.Read("Position_data");
-        }
-
+   
         public void PositionButton()
         {
+            ResetButtonsHeatMap();
             active_position = !active_position;
-
-            GameObject button = GameObject.Find("ShowPositionDataButtonCanvas");
-            TMP_Text textmeshPro = button.GetComponentInChildren<TMP_Text>();
-            ChangeTextColor(active_position, textmeshPro);
-
+            ActiveButtonHeatMap(active_position, "ShowPositionDataButtonCanvas");
         }
         public void DeathButton()
         {
+            ResetButtonsHeatMap();
             active_death = !active_death;
-
-            GameObject button = GameObject.Find("ShowDeathDataButtonCanvas");
-            TMP_Text textmeshPro = button.GetComponentInChildren<TMP_Text>();
-            ChangeTextColor(active_death, textmeshPro);
-
+            ActiveButtonHeatMap(active_death, "ShowDeathDataButtonCanvas");
         }
         public void AttackButton()
         {
+            ResetButtonsHeatMap();
             active_attack = !active_attack;
-
-            GameObject button = GameObject.Find("ShowAttackDataButtonCanvas");
-            TMP_Text textmeshPro = button.GetComponentInChildren<TMP_Text>();
-            ChangeTextColor(active_attack, textmeshPro);
-
+            ActiveButtonHeatMap(active_attack, "ShowAttackDataButtonCanvas");
         }
         public void JumpButton()
         {
+            ResetButtonsHeatMap();
             active_jump = !active_jump;
-
-            GameObject button = GameObject.Find("ShowJumpkDataButtonCanvas");
-            TMP_Text textmeshPro = button.GetComponentInChildren<TMP_Text>();
-            ChangeTextColor(active_jump, textmeshPro);
-
+            ActiveButtonHeatMap(active_jump, "ShowJumpkDataButtonCanvas");
         }
         public void DamagedButton()
         {
+            ResetButtonsHeatMap();
             active_damaged = !active_damaged;
-
-            GameObject button = GameObject.Find("ShowDamagedDataButtonCanvas");
-            TMP_Text textmeshPro = button.GetComponentInChildren<TMP_Text>();
-            ChangeTextColor(active_damaged, textmeshPro);
-
+            ActiveButtonHeatMap(active_damaged, "ShowDamagedDataButtonCanvas");       
         }
         public void EnemyKilledButton()
         {
+            ResetButtonsHeatMap();
             active_enemy_killed = !active_enemy_killed;
-
-            GameObject button = GameObject.Find("ShowEnemyKilledDataButtonCanvas");
-            TMP_Text textmeshPro = button.GetComponentInChildren<TMP_Text>();
-            ChangeTextColor(active_enemy_killed, textmeshPro);
-
+            ActiveButtonHeatMap(active_enemy_killed, "ShowEnemyKilledDataButtonCanvas");       
         }
         public void EnemyDamagedButton()
         {
+            ResetButtonsHeatMap();
             active_enemy_damaged = !active_enemy_damaged;
-
-            GameObject button = GameObject.Find("ShowEnemyDamagedDataButtonCanvas");
-            TMP_Text textmeshPro = button.GetComponentInChildren<TMP_Text>();
-            ChangeTextColor(active_enemy_damaged, textmeshPro);
-
+            ActiveButtonHeatMap(active_enemy_damaged, "ShowEnemyDamagedDataButtonCanvas");         
         }
         public void UIButton()
         {
+            ResetButtonsHeatMap();
             active_ui = !active_ui;
+            ActiveButtonHeatMap(active_ui, "ShowUiInteractionDataButtonCanvas");
+        }      
 
-            GameObject button = GameObject.Find("ShowUiInteractionDataButtonCanvas");
-            TMP_Text textmeshPro = button.GetComponentInChildren<TMP_Text>();
-            ChangeTextColor(active_ui, textmeshPro);
-
-        }
-        public void ShowHideAllButton()
-        {
-            active_all = !active_all;
-
-            GameObject button = GameObject.Find("ShowALLDataButtonCanvas");
-            TMP_Text textmeshPro = button.GetComponentInChildren<TMP_Text>();
-            ChangeTextColor(active_all, textmeshPro);
-          
-            if (active_all)
-                ResetActiveButtonsBool();
-            else
-                ActiveButtonsBool();
-
-            PositionButton();
-            DeathButton();
-            DamagedButton();
-            AttackButton();
-            EnemyDamagedButton();
-            EnemyKilledButton();
-            JumpButton();
-            UIButton();
-        }
 
         private void ChangeTextColor(bool active, TMP_Text textmeshPro)
         {
@@ -271,10 +225,17 @@ namespace Gamekit3D
                 textmeshPro.color = new Color32(0, 102, 204, 255);
             else
                 textmeshPro.color = new Color32(255, 255, 255, 255);
+
         }
 
-        private void ResetActiveButtonsBool()
+        private void ResetButtonsHeatMap()
         {
+            foreach (var item in buttons)
+            {
+                TMP_Text textmeshPro = item.GetComponentInChildren<TMP_Text>();
+                ChangeTextColor(false, textmeshPro);
+            }
+
             active_position = false;
             active_jump = false;
             active_attack = false;
@@ -284,16 +245,17 @@ namespace Gamekit3D
             active_enemy_damaged = false;
             active_enemy_killed = false;
         }
-        private void ActiveButtonsBool()
+
+        private void ActiveButtonHeatMap(bool active, string name)
         {
-            active_position = true;
-            active_jump = true;
-            active_attack = true;
-            active_death = true;
-            active_damaged = true;
-            active_ui = true;
-            active_enemy_damaged = true;
-            active_enemy_killed = true;
+            foreach (var item in buttons)
+            {
+                if(item.name == name)
+                {
+                    TMP_Text textmeshPro = item.GetComponentInChildren<TMP_Text>();
+                    ChangeTextColor(active, textmeshPro);
+                }                
+            }
         }
     }
 }
