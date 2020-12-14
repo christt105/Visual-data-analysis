@@ -796,7 +796,7 @@ namespace Gamekit3D
             //Debug.Log("Player Movement");
             //=========================================================================================
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             StartCoroutine("TrackPosition");
         }
     }

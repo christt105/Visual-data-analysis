@@ -20,6 +20,8 @@ namespace Gamekit3D
         public GameObject audioCanvas;
         public GameObject heatmapCanvas;
 
+        public GameObject heatmap;
+
         protected bool m_InPause;
         protected PlayableDirector[] m_Directors;
 
@@ -162,10 +164,11 @@ namespace Gamekit3D
         {
             SavePosition();
             SaveEvents();
+            AssetDatabase.Refresh();
             PlayerEventTrack.EventData = ReadData.Read("Saved_data");
             PlayerEventTrack.PositiontData = ReadData.Read("Position_data");
 
-            //TODO: Christt stuff
+            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.Position);
         }
 
    
