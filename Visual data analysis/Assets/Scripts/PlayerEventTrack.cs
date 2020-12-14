@@ -9,7 +9,7 @@ public class PlayerEventTrack
 
     static public List<Dictionary<string, object>> EventList = new List<Dictionary<string, object>>();
     static public List<Dictionary<string, object>> EventData = new List<Dictionary<string, object>>();
-    static public List<Dictionary<string, object>> PositiontData = new List<Dictionary<string, object>>();
+    static public List<Dictionary<string, object>> PositionData = new List<Dictionary<string, object>>();
    
    
 }

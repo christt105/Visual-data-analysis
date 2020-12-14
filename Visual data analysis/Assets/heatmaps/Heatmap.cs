@@ -16,7 +16,9 @@ public class Heatmap : MonoBehaviour
     {
         Position,
         Death,
-        Jump
+        Jump,
+        OpenMenu,
+        Attack
     }
 
     void Start()
@@ -24,7 +26,6 @@ public class Heatmap : MonoBehaviour
         var dic = ReadData.Read("Position_data");
 
         count = dic.Count;
-        Debug.Log(count);
 
         positions = new Vector4[count];
         properties = new Vector4[count];
@@ -40,8 +41,13 @@ public class Heatmap : MonoBehaviour
         material.SetVectorArray("_Properties", properties);
     }
 
-    private void Update()
+    public void ResetMap()
     {
+        count = 0;
+
+        positions = new Vector4[count];
+        properties = new Vector4[count];
+
         material.SetInt("_Points_Length", count);
         material.SetVectorArray("_Points", positions);
         material.SetVectorArray("_Properties", properties);
@@ -49,14 +55,12 @@ public class Heatmap : MonoBehaviour
 
     public void GenerateMap(HeatmapType type)
     {
+        var dic = PlayerEventTrack.PositionData;
+        int d = 0;
         switch (type)
         {
             case HeatmapType.Position:
-                Debug.Log("HOLA");
-                var dic = PlayerEventTrack.PositiontData;
-
                 count = dic.Count;
-                Debug.Log(count);
 
                 positions = new Vector4[count];
                 properties = new Vector4[count];
@@ -66,15 +70,87 @@ public class Heatmap : MonoBehaviour
                     positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
                     properties[i] = new Vector4(1.0f, 0.5f, 0, 0);
                 }
-
-                material.SetInt("_Points_Length", count);
-                material.SetVectorArray("_Points", positions);
-                material.SetVectorArray("_Properties", properties);
                 break;
             case HeatmapType.Death:
+                dic = PlayerEventTrack.EventData;
+
+                count = dic.Count;
+
+                positions = new Vector4[count];
+                properties = new Vector4[count];
+
+                for (int i = 0; i < count; ++i)
+                {
+                    if ((string)dic[i]["Type"] == "Dead")
+                    {
+                        Debug.Log("YES");
+                        ++d;
+                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                    }
+                }
+                count = d;
                 break;
             case HeatmapType.Jump:
+                dic = PlayerEventTrack.EventData;
+
+                count = dic.Count;
+
+                positions = new Vector4[count];
+                properties = new Vector4[count];
+
+                for (int i = 0; i < count; ++i)
+                {
+                    if ((string)dic[i]["Type"] == "Jump")
+                    {
+                        ++d;
+                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                    }
+                }
+                count = d;
+                break;
+            case HeatmapType.OpenMenu:
+                dic = PlayerEventTrack.EventData;
+
+                count = dic.Count;
+
+                positions = new Vector4[count];
+                properties = new Vector4[count];
+
+                for (int i = 0; i < count; ++i)
+                {
+                    if ((string)dic[i]["Type"] == "OpenMenu")
+                    {
+                        ++d;
+                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                    }
+                }
+                count = d;
+                break;
+            case HeatmapType.Attack:
+                dic = PlayerEventTrack.EventData;
+
+                count = dic.Count;
+
+                positions = new Vector4[count];
+                properties = new Vector4[count];
+
+                for (int i = 0; i < count; ++i)
+                {
+                    if ((string)dic[i]["Type"] == "Attack")
+                    {
+                        ++d;
+                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                    }
+                }
+                count = d;
                 break;
         }
+        material.SetInt("_Points_Length", count);
+        material.SetVectorArray("_Points", positions);
+        material.SetVectorArray("_Properties", properties);
     }
 }
