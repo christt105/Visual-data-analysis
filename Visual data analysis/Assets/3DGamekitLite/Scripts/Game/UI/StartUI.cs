@@ -209,27 +209,31 @@ namespace Gamekit3D
             //SaveDataButton();
             ResetButtonsHeatMap();
             active_damaged = !active_damaged;
-            ActiveButtonHeatMap(active_damaged, "ShowDamagedDataButtonCanvas");       
+            ActiveButtonHeatMap(active_damaged, "ShowDamagedDataButtonCanvas");
+            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.Damaged);
         }
         public void EnemyKilledButton()
         {
             //SaveDataButton();
             ResetButtonsHeatMap();
             active_enemy_killed = !active_enemy_killed;
-            ActiveButtonHeatMap(active_enemy_killed, "ShowEnemyKilledDataButtonCanvas");       
+            ActiveButtonHeatMap(active_enemy_killed, "ShowEnemyKilledDataButtonCanvas");
+            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.EnemyKilled);
         }
         public void EnemyDamagedButton()
         {
             //SaveDataButton();
             ResetButtonsHeatMap();
             active_enemy_damaged = !active_enemy_damaged;
-            ActiveButtonHeatMap(active_enemy_damaged, "ShowEnemyDamagedDataButtonCanvas");         
+            ActiveButtonHeatMap(active_enemy_damaged, "ShowEnemyDamagedDataButtonCanvas");
+            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.EnemyDamaged);
         }
         public void UIButton()
         {
             ResetButtonsHeatMap();
             active_ui = !active_ui;
             ActiveButtonHeatMap(active_ui, "ShowUiInteractionDataButtonCanvas");
+            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.OpenMenu);
         }      
 
 

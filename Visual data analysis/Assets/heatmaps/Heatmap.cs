@@ -18,7 +18,10 @@ public class Heatmap : MonoBehaviour
         Death,
         Jump,
         OpenMenu,
-        Attack
+        Attack,
+        Damaged,
+        EnemyKilled,
+        EnemyDamaged
     }
 
     void Start()
@@ -140,6 +143,63 @@ public class Heatmap : MonoBehaviour
                 for (int i = 0; i < count; ++i)
                 {
                     if ((string)dic[i]["Type"] == "Attack")
+                    {
+                        ++d;
+                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                    }
+                }
+                count = d;
+                break;
+            case HeatmapType.Damaged:
+                dic = PlayerEventTrack.EventData;
+
+                count = dic.Count;
+
+                positions = new Vector4[count];
+                properties = new Vector4[count];
+
+                for (int i = 0; i < count; ++i)
+                {
+                    if ((string)dic[i]["Type"] == "Damaged")
+                    {
+                        ++d;
+                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                    }
+                }
+                count = d;
+                break;
+            case HeatmapType.EnemyKilled:
+                dic = PlayerEventTrack.EventData;
+
+                count = dic.Count;
+
+                positions = new Vector4[count];
+                properties = new Vector4[count];
+
+                for (int i = 0; i < count; ++i)
+                {
+                    if ((string)dic[i]["Type"] == "EnemyKilled")
+                    {
+                        ++d;
+                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                    }
+                }
+                count = d;
+                break;
+            case HeatmapType.EnemyDamaged:
+                dic = PlayerEventTrack.EventData;
+
+                count = dic.Count;
+
+                positions = new Vector4[count];
+                properties = new Vector4[count];
+
+                for (int i = 0; i < count; ++i)
+                {
+                    if ((string)dic[i]["Type"] == "EnemyDamaged")
                     {
                         ++d;
                         positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
