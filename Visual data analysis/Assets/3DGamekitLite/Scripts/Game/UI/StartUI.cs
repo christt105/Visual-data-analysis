@@ -66,6 +66,7 @@ namespace Gamekit3D
         public void ExitPause()
         {
             m_InPause = true;
+            ResetButtonsHeatMap();
             SwitchPauseState();
         }
 
@@ -173,7 +174,7 @@ namespace Gamekit3D
    
         public void PositionButton()
         {
-            SaveDataButton();
+            //SaveDataButton();
             ResetButtonsHeatMap();
             active_position = !active_position;
             ActiveButtonHeatMap(active_position, "ShowPositionDataButtonCanvas");
@@ -181,7 +182,7 @@ namespace Gamekit3D
         }
         public void DeathButton()
         {
-            SaveDataButton();
+            //SaveDataButton();
             ResetButtonsHeatMap();
             active_death = !active_death;
             ActiveButtonHeatMap(active_death, "ShowDeathDataButtonCanvas");
@@ -189,7 +190,7 @@ namespace Gamekit3D
         }
         public void AttackButton()
         {
-            SaveDataButton();
+            //SaveDataButton();
             ResetButtonsHeatMap();
             active_attack = !active_attack;
             ActiveButtonHeatMap(active_attack, "ShowAttackDataButtonCanvas");
@@ -197,7 +198,7 @@ namespace Gamekit3D
         }
         public void JumpButton()
         {
-            SaveDataButton();
+           // SaveDataButton();
             ResetButtonsHeatMap();
             active_jump = !active_jump;
             ActiveButtonHeatMap(active_jump, "ShowJumpkDataButtonCanvas");
@@ -205,21 +206,21 @@ namespace Gamekit3D
         }
         public void DamagedButton()
         {
-            SaveDataButton();
+            //SaveDataButton();
             ResetButtonsHeatMap();
             active_damaged = !active_damaged;
             ActiveButtonHeatMap(active_damaged, "ShowDamagedDataButtonCanvas");       
         }
         public void EnemyKilledButton()
         {
-            SaveDataButton();
+            //SaveDataButton();
             ResetButtonsHeatMap();
             active_enemy_killed = !active_enemy_killed;
             ActiveButtonHeatMap(active_enemy_killed, "ShowEnemyKilledDataButtonCanvas");       
         }
         public void EnemyDamagedButton()
         {
-            SaveDataButton();
+            //SaveDataButton();
             ResetButtonsHeatMap();
             active_enemy_damaged = !active_enemy_damaged;
             ActiveButtonHeatMap(active_enemy_damaged, "ShowEnemyDamagedDataButtonCanvas");         
