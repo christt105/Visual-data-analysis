@@ -167,50 +167,59 @@ namespace Gamekit3D
             SaveEvents();
             AssetDatabase.Refresh();
             PlayerEventTrack.EventData = ReadData.Read("Saved_data");
-            PlayerEventTrack.PositiontData = ReadData.Read("Position_data");
-
-            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.Position);
+            PlayerEventTrack.PositionData = ReadData.Read("Position_data");
         }
 
    
         public void PositionButton()
         {
+            SaveDataButton();
             ResetButtonsHeatMap();
             active_position = !active_position;
             ActiveButtonHeatMap(active_position, "ShowPositionDataButtonCanvas");
+            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.Position);
         }
         public void DeathButton()
         {
+            SaveDataButton();
             ResetButtonsHeatMap();
             active_death = !active_death;
             ActiveButtonHeatMap(active_death, "ShowDeathDataButtonCanvas");
+            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.Death);
         }
         public void AttackButton()
         {
+            SaveDataButton();
             ResetButtonsHeatMap();
             active_attack = !active_attack;
             ActiveButtonHeatMap(active_attack, "ShowAttackDataButtonCanvas");
+            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.Attack);
         }
         public void JumpButton()
         {
+            SaveDataButton();
             ResetButtonsHeatMap();
             active_jump = !active_jump;
             ActiveButtonHeatMap(active_jump, "ShowJumpkDataButtonCanvas");
+            heatmap.GetComponent<Heatmap>().GenerateMap(Heatmap.HeatmapType.Jump);
         }
         public void DamagedButton()
         {
+            SaveDataButton();
             ResetButtonsHeatMap();
             active_damaged = !active_damaged;
             ActiveButtonHeatMap(active_damaged, "ShowDamagedDataButtonCanvas");       
         }
         public void EnemyKilledButton()
         {
+            SaveDataButton();
             ResetButtonsHeatMap();
             active_enemy_killed = !active_enemy_killed;
             ActiveButtonHeatMap(active_enemy_killed, "ShowEnemyKilledDataButtonCanvas");       
         }
         public void EnemyDamagedButton()
         {
+            SaveDataButton();
             ResetButtonsHeatMap();
             active_enemy_damaged = !active_enemy_damaged;
             ActiveButtonHeatMap(active_enemy_damaged, "ShowEnemyDamagedDataButtonCanvas");         
