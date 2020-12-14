@@ -22,7 +22,7 @@ namespace Gamekit3D
 
         public GameObject heatmap;
 
-        protected bool m_InPause;
+        static public bool m_InPause;
         protected PlayableDirector[] m_Directors;
 
         // UI bool ===========================================
@@ -155,6 +155,7 @@ namespace Gamekit3D
                 PlayerEventTrack.EventList.Add(myDic);
                 Debug.Log("Player OpenMenu");
                 //=========================================================================================
+
             }
 
             m_InPause = !m_InPause;
