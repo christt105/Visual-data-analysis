@@ -87,9 +87,8 @@ public class Heatmap : MonoBehaviour
                     if ((string)dic[i]["Type"] == "Dead")
                     {
                         Debug.Log("YES");
-                        ++d;
-                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
-                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                        positions[d] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[d++] = new Vector4(1.0f, 1.0f, 0, 0);
                     }
                 }
                 count = d;
@@ -106,9 +105,8 @@ public class Heatmap : MonoBehaviour
                 {
                     if ((string)dic[i]["Type"] == "Jump")
                     {
-                        ++d;
-                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
-                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                        positions[d] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[d++] = new Vector4(1.0f, 0.85f, 0, 0);
                     }
                 }
                 count = d;
@@ -125,9 +123,8 @@ public class Heatmap : MonoBehaviour
                 {
                     if ((string)dic[i]["Type"] == "OpenMenu")
                     {
-                        ++d;
-                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
-                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                        positions[d] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[d++] = new Vector4(1.0f, 0.85f, 0, 0);
                     }
                 }
                 count = d;
@@ -144,9 +141,8 @@ public class Heatmap : MonoBehaviour
                 {
                     if ((string)dic[i]["Type"] == "Attack")
                     {
-                        ++d;
-                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
-                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                        positions[d] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[d++] = new Vector4(1.0f, 0.85f, 0, 0);
                     }
                 }
                 count = d;
@@ -163,9 +159,8 @@ public class Heatmap : MonoBehaviour
                 {
                     if ((string)dic[i]["Type"] == "Damaged")
                     {
-                        ++d;
-                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
-                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                        positions[d] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[d++] = new Vector4(1.0f, 0.85f, 0, 0);
                     }
                 }
                 count = d;
@@ -182,9 +177,8 @@ public class Heatmap : MonoBehaviour
                 {
                     if ((string)dic[i]["Type"] == "EnemyKilled")
                     {
-                        ++d;
-                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
-                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                        positions[d] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[d++] = new Vector4(1.0f, 0.85f, 0, 0);
                     }
                 }
                 count = d;
@@ -201,9 +195,8 @@ public class Heatmap : MonoBehaviour
                 {
                     if ((string)dic[i]["Type"] == "EnemyDamaged")
                     {
-                        ++d;
-                        positions[i] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
-                        properties[i] = new Vector4(1.0f, 0.85f, 0, 0);
+                        positions[d] = new Vector4((float)dic[i]["PositionX"], 0f, (float)dic[i]["PositionZ"], 0);
+                        properties[d++] = new Vector4(1.0f, 0.85f, 0, 0);
                     }
                 }
                 count = d;
