@@ -33,21 +33,21 @@ public class MinimapCameraZoom : MonoBehaviour
             Vector3 move_pos = cam.transform.localPosition;
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
-                move_pos = new Vector3(move_pos.x, move_pos.y, move_pos.z - speed);
+                move_pos = new Vector3(move_pos.x, move_pos.y, move_pos.z + speed);
             }
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
-                move_pos = new Vector3(move_pos.x, move_pos.y, move_pos.z + speed);
+                move_pos = new Vector3(move_pos.x, move_pos.y, move_pos.z - speed);
 
             }
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                move_pos = new Vector3(move_pos.x - speed, move_pos.y, move_pos.z);
+                move_pos = new Vector3(move_pos.x + speed, move_pos.y, move_pos.z);
 
             }
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                move_pos = new Vector3(move_pos.x + speed, move_pos.y, move_pos.z);
+                move_pos = new Vector3(move_pos.x - speed, move_pos.y, move_pos.z);
             }
 
             // Update final pos
